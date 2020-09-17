@@ -11,6 +11,7 @@ const OwnMeme = () => {
     e.preventDefault();
     setImageName(e.target.files[0].name);
     setImageUrl(URL.createObjectURL(e.target.files[0]));
+    console.log(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleImageLink = (e) => setImageLink(e.target.value);
