@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import { MemeContext } from "../context/MemeContext";
+import React, { useState } from "react";
 import MemeGenerator from "../singleMeme/MemeGenerator";
 
 const OwnMeme = () => {
-  const { imageUrl, setImageUrl } = useContext(MemeContext);
+  const [imageUrl, setImageUrl] = useState("");
   const [imageName, setImageName] = useState("");
   const [imageLink, setImageLink] = useState("");
 
@@ -11,7 +10,6 @@ const OwnMeme = () => {
     e.preventDefault();
     setImageName(e.target.files[0].name);
     setImageUrl(URL.createObjectURL(e.target.files[0]));
-    console.log(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleImageLink = (e) => setImageLink(e.target.value);

@@ -27,7 +27,7 @@ const Navbar = () => {
           <NavLink to="ownMeme" heading="Create own meme" />
         </div>
         <div>
-          <a href="https://github.com/ankitk26/React-Meme-Generator-SPP-Project">
+          <a href="https://github.com/ankitk26/React-Meme-Generator-SPP-Project" target="_blank">
             <i className="fab fa-github fa-2x"></i>
           </a>
         </div>
