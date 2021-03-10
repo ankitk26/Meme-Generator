@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { MemeContext } from "../context/MemeContext";
+import { MemeContext } from "../../context/MemeContext";
 
 const MemeSearch = () => {
   const search = useRef("");

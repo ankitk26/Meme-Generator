@@ -1,17 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import CustomNavLink from "../layouts/CustomNavLink";
 
 const Home = () => {
-  const NavLink = ({ to, heading }) => {
-    return (
-      // Link to the route page
-      <Link to={`/${to}`}>
-        <button className="p-3 bg-gray-100 opacity-75 text-gray-900 px-6 font-bold focus:outline-none hover:bg-gray-300">
-          {heading}
-        </button>
-      </Link>
-    );
-  };
   return (
     <div className="intro-page">
       {/* Black overlay */}
@@ -21,8 +11,12 @@ const Home = () => {
         </h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-10 mt-5">
           {/* Navigation Links */}
-          <NavLink to="memeTemplates" heading="All Meme Templates" />
-          <NavLink to="ownMeme" heading="Upload File" />
+          <CustomNavLink
+            to="memeTemplates"
+            heading="All Meme Templates"
+            component="home"
+          />
+          <CustomNavLink to="ownMeme" heading="Upload File" component="home" />
         </div>
       </section>
     </div>

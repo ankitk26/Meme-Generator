@@ -1,9 +1,9 @@
 import React, { useReducer, useEffect, useContext } from "react";
-import { MemeContext } from "../context/MemeContext";
-import { initialState, captionReducer } from "./CaptionReducer";
-import Caption from "./memeEditingTools/Caption";
-import ColorSection from "./memeEditingTools/ColorSection";
-import FontStyle from "./memeEditingTools/FontStyle";
+import { MemeContext } from "../../context/MemeContext";
+import { initialState, captionReducer } from "../singleMemePage/CaptionReducer";
+import Caption from "../singleMemePage/memeEditingTools/Caption";
+import ColorSection from "../singleMemePage/memeEditingTools/ColorSection";
+import FontStyle from "../singleMemePage/memeEditingTools/FontStyle";
 
 const Box = ({ index, id }) => {
   const { changeBoxes } = useContext(MemeContext);

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Meme from "./Meme";
-import { MemeContext } from "../context/MemeContext";
+import { MemeContext } from "../../context/MemeContext";
 
 const Memes = ({ memes }) => {
   const { filteredMemes } = useContext(MemeContext);

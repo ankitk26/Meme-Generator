@@ -1,20 +1,23 @@
 import React, { useEffect, useContext, useState } from "react";
 import { MemeContext } from "../context/MemeContext";
-import MemeSearch from "./MemeSearch";
-import Pagination from "./Pagination";
-import Memes from "./Memes";
+import MemeSearch from "../components/memeTemplatesPage/MemeSearch";
+import Pagination from "../components/memeTemplatesPage/Pagination";
+import Memes from "../components/memeTemplatesPage/Memes";
 import Loader from "../layouts/Loader";
 import Error from "../layouts/Error";
 
 const MemeTemplates = () => {
-  const { memes, loading, error, fetchMemes, clearFilter } = useContext(MemeContext);
+  const { memes, loading, error, fetchMemes, clearFilter } = useContext(
+    MemeContext
+  );
 
   // Pagination setup
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(25);
   const indexOfLastMeme = currentPage * perPage;
   const indexOfFirstMeme = indexOfLastMeme - perPage;
-  const currentMemes = memes.length > 0 && memes.slice(indexOfFirstMeme, indexOfLastMeme);
+  const currentMemes =
+    memes.length > 0 && memes.slice(indexOfFirstMeme, indexOfLastMeme);
 
   useEffect(() => {
     fetchMemes();
@@ -37,9 +40,19 @@ const MemeTemplates = () => {
         <Loader />
       ) : (
         <>
-          <Pagination perPage={perPage} totalMemes={memes.length} paginate={paginate} currentPage={currentPage} />
+          <Pagination
+            perPage={perPage}
+            totalMemes={memes.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
           <Memes memes={currentMemes} loading={loading} error={error} />
-          <Pagination perPage={perPage} totalMemes={memes.length} paginate={paginate} currentPage={currentPage} />
+          <Pagination
+            perPage={perPage}
+            totalMemes={memes.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
         </>
       )}
     </div>

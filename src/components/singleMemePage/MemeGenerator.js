@@ -6,7 +6,9 @@ import { saveAs } from "file-saver";
 
 const MemeGenerator = (props) => {
   const [isMeme] = useState(props.meme !== undefined ? true : false);
-  const [boxesCount, setBoxesCount] = useState(isMeme ? props.meme.box_count : props.box_count);
+  const [boxesCount, setBoxesCount] = useState(
+    isMeme ? props.meme.box_count : props.box_count
+  );
 
   let boxes = [];
   for (let i = 1; i <= boxesCount; i++) {
@@ -23,12 +25,19 @@ const MemeGenerator = (props) => {
     <div className="mt-6 mx-auto container">
       <div className="flex flex-col md:flex-row justify-evenly items-center md:items-start gap-10 md:gap-20 bg-gray-200 px-10 py-5">
         <div className="w-full md:w-1/2">
-          <ImageSection image={isMeme ? props.meme.url : props.imageUrl} box_count={boxesCount} />
+          <ImageSection
+            image={isMeme ? props.meme.url : props.imageUrl}
+            box_count={boxesCount}
+          />
         </div>
         <div className="w-full md:w-1/2">
           <div className="w-full md:w-4/5 mt-5 md:mx-3">
             {boxes.map((box, index) => (
-              <Captions key={index} index={index} id={isMeme ? props.meme.id : index} />
+              <Captions
+                key={index}
+                index={index}
+                id={isMeme ? props.meme.id : index}
+              />
             ))}
             <div className="flex flex-col md:flex-row items-center md:items-start gap-5">
               <button

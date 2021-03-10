@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { MemeContext } from "../context/MemeContext";
+import { MemeContext } from "../../context/MemeContext";
 import { Rnd } from "react-rnd";
 
 const ImageSection = ({ image }) => {
@@ -30,18 +30,24 @@ const ImageSection = ({ image }) => {
   return (
     <>
       <div className="container w-11/12 relative" id="downloadMeme">
-        <img src={image} alt="memeImage" className="w-full object-contain relative overflow-auto" />
+        <img
+          src={image}
+          alt="memeImage"
+          className="w-full object-contain relative overflow-auto"
+        />
         {boxes !== undefined &&
-          boxes.map(({ outline_color, color, fontFamily, fontSize, text }, index) => (
-            <Rnd
-              style={getStyle(outline_color, color, fontFamily, fontSize)}
-              default={{ x: 20, y: getTop(index) }}
-              key={index}
-              bounds="#downloadMeme"
-            >
-              {text}
-            </Rnd>
-          ))}
+          boxes.map(
+            ({ outline_color, color, fontFamily, fontSize, text }, index) => (
+              <Rnd
+                style={getStyle(outline_color, color, fontFamily, fontSize)}
+                default={{ x: 20, y: getTop(index) }}
+                key={index}
+                bounds="#downloadMeme"
+              >
+                {text}
+              </Rnd>
+            )
+          )}
       </div>
     </>
   );

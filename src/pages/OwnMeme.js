@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MemeGenerator from "../singleMeme/MemeGenerator";
+import MemeGenerator from "../components/singleMemePage/MemeGenerator";
 
 const OwnMeme = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -33,7 +33,12 @@ const OwnMeme = () => {
           >
             <i className="fas fa-image mr-2"></i> Upload Image
           </label>
-          <input type="file" name="inputImage" id="inputImage" onChange={handleFileChange} />
+          <input
+            type="file"
+            name="inputImage"
+            id="inputImage"
+            onChange={handleFileChange}
+          />
         </div>
         {/* Paste Image Link */}
         <div className="w-full md:w-auto">
@@ -49,16 +54,25 @@ const OwnMeme = () => {
             />
           </label>
         </div>
-        <button className="bg-blue-700 text-gray-100 px-2 py-1 w-full md:w-auto" onClick={resetAll}>
+        <button
+          className="bg-blue-700 text-gray-100 px-2 py-1 w-full md:w-auto"
+          onClick={resetAll}
+        >
           Clear
         </button>
       </div>
       <div className="flex gap-3 justify-center items-center mt-10">
         <i className="fas fa-info-circle text-gray-800"></i>
-        <h1 className="text-gray-800">Drag the text to move it around the image</h1>
+        <h1 className="text-gray-800">
+          Drag the text to move it around the image
+        </h1>
       </div>
       {(imageUrl || imageLink) && (
-        <MemeGenerator imageUrl={imageUrl === null ? imageLink : imageUrl} box_count={2} imageName={imageName} />
+        <MemeGenerator
+          imageUrl={imageUrl === null ? imageLink : imageUrl}
+          box_count={2}
+          imageName={imageName}
+        />
       )}
     </div>
   );

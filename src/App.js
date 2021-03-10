@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/layouts/Home";
-import MemeTemplates from "./components/memeTemplates/MemeTemplates";
-import Navbar from "./components/layouts/Navbar";
-import SingleMeme from "./components/singleMeme/SingleMeme";
-import OwnMeme from "./components/customMeme/OwnMeme";
-import { MemeProvider } from "./components/context/MemeContext";
-import "./css/App.css";
-import "./css/style.css";
 
-function App() {
+import Home from "./pages/Home";
+import MemeTemplates from "./pages/MemeTemplates";
+import Navbar from "./layouts/Navbar";
+import SingleMeme from "./pages/SingleMeme";
+import OwnMeme from "./pages/OwnMeme";
+
+import { MemeProvider } from "./context/MemeContext";
+
+import "./assets/css/App.css";
+import "./assets/css/style.css";
+
+const App = () => {
   return (
     <MemeProvider>
       <Router>
@@ -23,6 +26,6 @@ function App() {
       </Router>
     </MemeProvider>
   );
-}
+};
 
 export default App;
