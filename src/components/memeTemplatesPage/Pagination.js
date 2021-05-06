@@ -1,5 +1,3 @@
-import React from "react";
-
 const Pagination = ({ perPage, totalMemes, paginate, currentPage }) => {
   const pageNumbers = [];
 
@@ -7,11 +5,13 @@ const Pagination = ({ perPage, totalMemes, paginate, currentPage }) => {
   for (let i = 1; i <= Math.ceil(totalMemes / perPage); i++) {
     pageNumbers.push(i);
   }
-  let pageNumberClassName = "rounded border-2 border-gray-600 px-3 py-1 cursor-pointer";
+
+  const pageNumberClassName =
+    "rounded border-2 border-gray-600 px-3 py-1 cursor-pointer";
 
   return (
     <div className="my-5 mb-10">
-      <ul className="flex justify-center items-center gap-5 md:gap-10 ">
+      <ul className="flex items-center justify-center gap-5 md:gap-10 ">
         {/* Map all page numbers */}
         {pageNumbers.map((number) => (
           <li

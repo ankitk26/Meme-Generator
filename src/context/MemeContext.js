@@ -1,7 +1,16 @@
-import React, { useReducer, createContext } from "react";
 import axios from "axios";
+import { createContext, useContext, useReducer } from "react";
+import {
+  CHANGE_BOXES,
+  CLEAR,
+  CLEAR_FILTER,
+  ERROR,
+  FILTER_MEMES,
+  LOADING,
+  SET_IMAGE,
+  SET_MEMES,
+} from "./actions";
 import { memeReducer } from "./memeReducer";
-import { CHANGE_BOXES, CLEAR, SET_MEMES, LOADING, ERROR, SET_IMAGE, FILTER_MEMES, CLEAR_FILTER } from "./actions";
 
 const initialState = {
   boxes: [],
@@ -16,9 +25,20 @@ export const MemeContext = createContext();
 
 export const MemeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(memeReducer, initialState);
+  const GET_MEMES_URL = "https://api.imgflip.com/get_memes";
 
-  const changeBoxes = (text, color, outline_color, fontFamily, fontSize, index) =>
-    dispatch({ type: CHANGE_BOXES, payload: { text, color, outline_color, index, fontFamily, fontSize } });
+  const changeBoxes = (
+    text,
+    color,
+    outline_color,
+    fontFamily,
+    fontSize,
+    index
+  ) =>
+    dispatch({
+      type: CHANGE_BOXES,
+      payload: { text, color, outline_color, index, fontFamily, fontSize },
+    });
 
   const clear = () => dispatch({ type: CLEAR, payload: [] });
 
@@ -35,13 +55,14 @@ export const MemeProvider = ({ children }) => {
   const setImage = (url) => dispatch({ type: SET_IMAGE, payload: url });
 
   // Fetch memes from IMGFLIP API
-  const GET_MEMES_URL = "https://api.imgflip.com/get_memes";
+
   const fetchMemes = async () => {
     isLoading(true);
     hasError(false);
     try {
-      const memesData = await axios.get(GET_MEMES_URL);
-      setMemes(memesData.data.data.memes);
+      const res = await axios.get(GET_MEMES_URL);
+      const { data } = res.data;
+      setMemes(data.memes);
     } catch (err) {
       hasError(true);
     }
@@ -72,3 +93,5 @@ export const MemeProvider = ({ children }) => {
     </MemeContext.Provider>
   );
 };
+
+export const useMeme = () => useContext(MemeContext);

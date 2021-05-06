@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChromePicker } from "react-color";
 import { setColor, setOutlineColor } from "../CaptionReducer";
 
@@ -11,7 +11,9 @@ const Color = ({ state: { color, outline_color }, dispatch, type }) => {
 
   const handleColorChange = (updatedColor) => {
     let color = updatedColor.hex;
-    type === "color" ? dispatch(setColor(color)) : dispatch(setOutlineColor(color));
+    type === "color"
+      ? dispatch(setColor(color))
+      : dispatch(setOutlineColor(color));
   };
 
   const handleColorPickerClick = (e) => {
@@ -22,13 +24,13 @@ const Color = ({ state: { color, outline_color }, dispatch, type }) => {
   return (
     <div>
       <button
-        className="shadow px-4 py-4 rounded text-sm focus:outline-none hover:shadow-xl"
+        className="px-4 py-4 text-sm rounded shadow focus:outline-none hover:shadow-xl"
         style={{ backgroundColor: getPropertyColor() }}
         onClick={handleColorPickerClick}
       ></button>
       {showColorPicker && (
         <ChromePicker
-          className="cursor-pointer absolute z-50"
+          className="absolute z-50 cursor-pointer"
           color={getPropertyColor()}
           onChange={handleColorChange}
         />

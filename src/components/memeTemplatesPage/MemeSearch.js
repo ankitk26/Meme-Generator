@@ -1,9 +1,9 @@
-import React, { useContext, useRef, useEffect } from "react";
-import { MemeContext } from "../../context/MemeContext";
+import { useEffect, useRef } from "react";
+import { useMeme } from "../../context/MemeContext";
 
 const MemeSearch = () => {
   const search = useRef("");
-  const { filteredMemes, filterMemes, clearFilter } = useContext(MemeContext);
+  const { filteredMemes, filterMemes, clearFilter } = useMeme();
 
   useEffect(() => {
     if (filteredMemes === null) {
@@ -12,14 +12,13 @@ const MemeSearch = () => {
   });
 
   const handleSearchChange = (e) => {
-    if (search.current.value !== "") filterMemes(e.target.value);
-    else clearFilter();
+    search.current.value !== "" ? filterMemes(e.target.value) : clearFilter();
   };
 
   return (
     <>
       <input
-        className="my-5 px-3 py-1 border-2 border-gray-600 w-11/12 md:w-1/3 rounded-lg focus:outline-none"
+        className="w-11/12 px-3 py-1 my-5 border-2 border-gray-600 rounded-lg md:w-1/3 focus:outline-none"
         ref={search}
         placeholder="Search Memes"
         onChange={handleSearchChange}

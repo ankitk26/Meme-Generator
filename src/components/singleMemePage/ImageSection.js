@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import { MemeContext } from "../../context/MemeContext";
+import { useEffect } from "react";
 import { Rnd } from "react-rnd";
+import { useMeme } from "../../context/MemeContext";
 
 const ImageSection = ({ image }) => {
-  const { boxes, clear } = useContext(MemeContext);
+  const { boxes, clear } = useMeme();
 
   const getTop = (index) => 70 * index;
 
@@ -24,32 +24,32 @@ const ImageSection = ({ image }) => {
   useEffect(() => {
     return () => {
       clear();
-    }; // eslint-disable-next-line
+    };
+    // eslint-disable-next-line
   }, [image]);
 
   return (
-    <>
-      <div className="container w-11/12 relative" id="downloadMeme">
-        <img
-          src={image}
-          alt="memeImage"
-          className="w-full object-contain relative overflow-auto"
-        />
-        {boxes !== undefined &&
-          boxes.map(
-            ({ outline_color, color, fontFamily, fontSize, text }, index) => (
-              <Rnd
-                style={getStyle(outline_color, color, fontFamily, fontSize)}
-                default={{ x: 20, y: getTop(index) }}
-                key={index}
-                bounds="#downloadMeme"
-              >
-                {text}
-              </Rnd>
-            )
-          )}
-      </div>
-    </>
+    <div className="container relative w-11/12" id="downloadMeme">
+      <img
+        src={image}
+        alt="memeImage"
+        className="relative object-contain w-full overflow-auto"
+      />
+
+      {boxes !== undefined &&
+        boxes.map(
+          ({ outline_color, color, fontFamily, fontSize, text }, index) => (
+            <Rnd
+              style={getStyle(outline_color, color, fontFamily, fontSize)}
+              default={{ x: 20, y: getTop(index) }}
+              key={index}
+              bounds="#downloadMeme"
+            >
+              {text}
+            </Rnd>
+          )
+        )}
+    </div>
   );
 };
 

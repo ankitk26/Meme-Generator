@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Captions from "./Captions";
-import ImageSection from "./ImageSection";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
+import { useState } from "react";
+import Captions from "./Captions";
+import ImageSection from "./ImageSection";
 
 const MemeGenerator = (props) => {
   const [isMeme] = useState(props.meme !== undefined ? true : false);
@@ -22,8 +22,8 @@ const MemeGenerator = (props) => {
   };
 
   return (
-    <div className="mt-6 mx-auto container">
-      <div className="flex flex-col md:flex-row justify-evenly items-center md:items-start gap-10 md:gap-20 bg-gray-200 px-10 py-5">
+    <div className="container mx-auto mt-6">
+      <div className="flex flex-col items-center gap-10 px-10 py-5 bg-gray-200 md:flex-row justify-evenly md:items-start md:gap-20">
         <div className="w-full md:w-1/2">
           <ImageSection
             image={isMeme ? props.meme.url : props.imageUrl}
@@ -31,7 +31,7 @@ const MemeGenerator = (props) => {
           />
         </div>
         <div className="w-full md:w-1/2">
-          <div className="w-full md:w-4/5 mt-5 md:mx-3">
+          <div className="w-full mt-5 md:w-4/5 md:mx-3">
             {boxes.map((box, index) => (
               <Captions
                 key={index}
@@ -39,16 +39,16 @@ const MemeGenerator = (props) => {
                 id={isMeme ? props.meme.id : index}
               />
             ))}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-5">
+            <div className="flex flex-col items-center gap-5 md:flex-row md:items-start">
               <button
-                className="w-full md:w-auto md:ml-3 bg-blue-700 tracking-widest text-white px-4 py-2 rounded shadow hover:bg-blue-900 focus:outline-none flex items-center gap-3 justify-center"
+                className="flex items-center justify-center w-full gap-3 px-4 py-2 tracking-widest text-white bg-blue-700 rounded shadow md:w-auto md:ml-3 hover:bg-blue-900 focus:outline-none"
                 onClick={downloadMeme}
               >
-                <i className="fas fa-download text-white"></i>
+                <i className="text-white fas fa-download"></i>
                 <span>Download Meme</span>
               </button>
               <button
-                className="w-full md:w-auto bg-gray-100 border-2 border-blue-700 text-blue-700 md:ml-3 px-4 py-2 shadow rounded hover:bg-gray-200"
+                className="w-full px-4 py-2 text-blue-700 bg-gray-100 border-2 border-blue-700 rounded shadow md:w-auto md:ml-3 hover:bg-gray-200"
                 onClick={() => setBoxesCount((prevCount) => prevCount + 1)}
               >
                 Add Text

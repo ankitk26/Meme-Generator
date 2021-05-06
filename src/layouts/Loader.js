@@ -1,12 +1,11 @@
-import React from "react";
 import loader from "../assets/images/loader.svg";
 
-function Loader() {
+const Loader = () => {
   return (
     <div className="container flex justify-center mt-20">
-      <img src={loader} alt="Loading memes..." style={{ width: "75px" }} />
+      <img src={loader} alt="Loading memes..." className="w-16" />
     </div>
   );
-}
+};
 
 export default Loader;

@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { navbarNavlink, homeNavlink } from "../utils/utils";
+import { homeNavlink, navbarNavlink } from "../utils/utils";
 
 const CustomNavLink = ({ to, heading, component }) => {
   return (

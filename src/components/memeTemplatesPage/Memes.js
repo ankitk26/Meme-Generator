@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import Meme from "./Meme";
+import { useContext } from "react";
 import { MemeContext } from "../../context/MemeContext";
+import MemeItem from "./MemeItem";
 
 const Memes = ({ memes }) => {
   const { filteredMemes } = useContext(MemeContext);
@@ -8,13 +8,13 @@ const Memes = ({ memes }) => {
   return (
     // Map through all memes or map through filtered memes
     memes.length || (filteredMemes != null && filteredMemes.length) ? (
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-6 justify-evenly items-center my-5">
+      <div className="grid items-center grid-cols-2 gap-6 my-5 md:grid-cols-5 justify-evenly">
         {filteredMemes !== null
-          ? filteredMemes.map((meme) => <Meme key={meme.id} meme={meme} />)
-          : memes.map((meme) => <Meme key={meme.id} meme={meme} />)}
+          ? filteredMemes.map((meme) => <MemeItem key={meme.id} meme={meme} />)
+          : memes.map((meme) => <MemeItem key={meme.id} meme={meme} />)}
       </div>
     ) : (
-      <div className="py-2 w-full text-center">
+      <div className="w-full py-2 text-center">
         <span className="text-xl text-gray-600">No results</span>
       </div>
     )

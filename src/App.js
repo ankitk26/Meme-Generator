@@ -1,16 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { MemeProvider } from "./context/MemeContext";
+import Navbar from "./layouts/Navbar";
 import Home from "./pages/Home";
 import MemeTemplates from "./pages/MemeTemplates";
-import Navbar from "./layouts/Navbar";
-import SingleMeme from "./pages/SingleMeme";
 import OwnMeme from "./pages/OwnMeme";
-
-import { MemeProvider } from "./context/MemeContext";
-
-import "./assets/css/App.css";
-import "./assets/css/style.css";
+import SingleMeme from "./pages/SingleMeme";
 
 const App = () => {
   return (
