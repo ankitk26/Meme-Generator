@@ -1,4 +1,16 @@
-const Pagination = ({ perPage, totalMemes, paginate, currentPage }) => {
+interface IProps {
+  perPage: number;
+  totalMemes: any;
+  setPage: (pageNumber: number) => void;
+  currentPage: number;
+}
+
+export default function Pagination({
+  perPage,
+  totalMemes,
+  setPage,
+  currentPage,
+}: IProps) {
   const pageNumbers = [];
 
   // Push page numbers into pageNumbers array
@@ -7,11 +19,11 @@ const Pagination = ({ perPage, totalMemes, paginate, currentPage }) => {
   }
 
   const pageNumberClassName =
-    "rounded border-2 border-gray-600 px-3 py-1 cursor-pointer";
+    "rounded w-8 h-8 text-sm font-medium flex items-center justify-center cursor-pointer";
 
   return (
-    <div className="my-5 mb-10">
-      <ul className="flex items-center justify-center gap-5 md:gap-10 ">
+    <div className="mt-12 mb-10">
+      <ul className="flex items-center justify-center gap-5 md:gap-6">
         {/* Map all page numbers */}
         {pageNumbers.map((number) => (
           <li
@@ -21,7 +33,7 @@ const Pagination = ({ perPage, totalMemes, paginate, currentPage }) => {
                 ? `bg-gray-600 text-white ${pageNumberClassName}`
                 : `bg-gray-100 hover:bg-gray-200 text-gray-600 ${pageNumberClassName}`
             }
-            onClick={() => paginate(number)}
+            onClick={() => setPage(number)}
           >
             {number}
           </li>
@@ -29,6 +41,4 @@ const Pagination = ({ perPage, totalMemes, paginate, currentPage }) => {
       </ul>
     </div>
   );
-};
-
-export default Pagination;
+}

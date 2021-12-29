@@ -1,15 +1,19 @@
 module.exports = {
-  mode: "jit",
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
       backgroundImage: (theme) => ({
         "intro-page": "url('/src/assets/images/intro.jpg')",
       }),
+      colors: {
+        background: "#F9F4F5",
+        primary: "#455a64",
+        "primary-dark": "#3B4C54",
+        "primary-light": "#718792",
+      },
     },
     fontFamily: {
-      sans: ["Montserrat", "sans-serif"],
+      sans: ["Open Sans", "sans-serif"],
     },
   },
   variants: {
