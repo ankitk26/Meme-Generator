@@ -1,5 +1,5 @@
 
-# Github-User
+# React Meme Generator
 
 Create memes from templates, desktop images or image URL
 
